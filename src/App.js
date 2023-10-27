@@ -17,7 +17,7 @@ function App() {
           saga="The Lord of the Rings"
           movieTitle="the%20lord%20of%20the%20rings"
         />
-        <Movies saga="Wonder Woman" movieTitle="wonder%20woman" />
+        <Movies saga="Dungeons & Dragons Movies" movieTitle="dungeons" />
         <Movies saga="Marvel Cinematic Universe" movieTitle="marvel" />
       </main>
       <MyFooter />
