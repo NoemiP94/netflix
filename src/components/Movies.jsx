@@ -51,7 +51,7 @@ class Movies extends Component {
       <Container fluid className="bg-dark text-light p-3">
         <h4>{this.props.saga}</h4>
         {this.state.isLoading && (
-          <div className="text-center mb-2">
+          <div className="text-center my-2">
             <Spinner animation="border" variant="danger" />
           </div>
         )}
