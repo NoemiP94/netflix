@@ -3,10 +3,14 @@ import { Container, Row, Col, Form } from 'react-bootstrap'
 const UpperBar = () => {
   return (
     <Container fluid className="bg-black">
-      <Row className="align-items-center">
+      <Row className="align-items-center pb-3">
         <Col className="d-flex align-items-center">
           <h2 className="ms-2 me-4 text-light">Tv Shows</h2>
-          <Form.Select aria-label="genres" className="w-25">
+          <Form.Select
+            aria-label="genres"
+            className="w-25"
+            placeholder="Genres"
+          >
             <option>Genres</option>
             <option>Comedy</option>
             <option>Drama</option>

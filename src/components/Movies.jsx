@@ -1,9 +1,14 @@
 import { Component } from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Container, Row, Col, Spinner, Alert, Carousel } from 'react-bootstrap'
 
 class Movies extends Component {
+  state = {
+    Search: [],
+    isLoading: true,
+    isError: false,
+  }
   showMovies = () => {
-    fetch('https://www.omdbapi.com/?apikey=1e18e07&s=starwars')
+    fetch('https://www.omdbapi.com/?apikey=1e18e07&s=' + this.props.movieTitle)
       .then((res) => {
         if (res.ok) {
           console.log(res)
@@ -14,9 +19,26 @@ class Movies extends Component {
       })
       .then((data) => {
         console.log('dati recuperati', data)
+        this.setState((first) => ({
+          Search: [
+            ...first.Search,
+            ...data.Search.map((movie) => ({
+              Title: movie.Title,
+              Year: movie.Year,
+              imdbId: movie.imdbID,
+              Type: movie.Type,
+              Poster: movie.Poster,
+            })),
+          ],
+          isLoading: false,
+        }))
       })
       .catch((err) => {
         console.log(err)
+        this.setState({
+          isLoading: false,
+          isError: true,
+        })
       })
   }
 
@@ -26,19 +48,60 @@ class Movies extends Component {
 
   render() {
     return (
-      <Container fluid className="bg-dark text-light">
-        <h4>Trending Now</h4>
-        <Row className="row-cols-1 row-cols-sm-2 row-cols-lg-4 row-cols-xl-6 mb-4">
-          {/* {this.data.search.map((movie) => {
-            return (
-              <Col key={movie.imdbId} className="mb-2 text-center px-1">
-                <div>
-                  <img src={movie.poster} alt={movie.title} className="grow" />
-                </div>
-              </Col>
-            )
-          })} */}
-        </Row>
+      <Container fluid className="bg-dark text-light p-3">
+        <h4>{this.props.saga}</h4>
+        {this.state.isLoading && (
+          <div className="text-center mb-2">
+            <Spinner animation="border" variant="danger" />
+          </div>
+        )}
+        {this.state.isError && (
+          <Alert variant="danger" className="text-center">
+            Errore!
+          </Alert>
+        )}
+        <Carousel>
+          <Carousel.Item>
+            <Row className="justify-content-center row-cols-2 row-cols-md-6 mb-4 pt-3">
+              {this.state.Search.slice(0, 5).map((movie) => {
+                return (
+                  <Col
+                    key={movie.imdbId}
+                    className="col-md-4 col-lg-4 col-xl-2 mb-2 text-center"
+                  >
+                    <img
+                      src={movie.Poster}
+                      alt={movie.Title}
+                      className="grow"
+                      width="250"
+                      height="300"
+                    />
+                  </Col>
+                )
+              })}
+            </Row>
+          </Carousel.Item>
+          <Carousel.Item>
+            <Row className="justify-content-center row-cols-2 row-cols-md-6 mb-4 pt-3">
+              {this.state.Search.slice(5, 10).map((movie) => {
+                return (
+                  <Col
+                    key={movie.imdbId}
+                    className="col-md-4 col-lg-4 col-xl-2 mb-2 text-center px-1"
+                  >
+                    <img
+                      src={movie.Poster}
+                      alt={movie.Title}
+                      className="grow"
+                      width="250"
+                      height="300"
+                    />
+                  </Col>
+                )
+              })}
+            </Row>
+          </Carousel.Item>
+        </Carousel>
       </Container>
     )
   }
