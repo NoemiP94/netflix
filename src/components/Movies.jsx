@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { Container, Row, Col, Spinner, Alert, Carousel } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 class Movies extends Component {
   state = {
@@ -70,13 +71,15 @@ class Movies extends Component {
                     key={movie.imdbId}
                     className="col-md-4 col-lg-4 col-xl-2 mb-2 text-center"
                   >
-                    <img
-                      src={movie.Poster}
-                      alt={movie.Title}
-                      className="grow"
-                      width="250"
-                      height="300"
-                    />
+                    <Link to={'/detail/' + movie.imdbId}>
+                      <img
+                        src={movie.Poster}
+                        alt={movie.Title}
+                        className="grow"
+                        width="250"
+                        height="300"
+                      />
+                    </Link>
                   </Col>
                 )
               })}
@@ -90,13 +93,15 @@ class Movies extends Component {
                     key={movie.imdbId}
                     className="col-md-4 col-lg-4 col-xl-2 mb-2 text-center px-1"
                   >
-                    <img
-                      src={movie.Poster}
-                      alt={movie.Title}
-                      className="grow"
-                      width="250"
-                      height="300"
-                    />
+                    <Link to={'/detail/' + movie.imdbId}>
+                      <img
+                        src={movie.Poster}
+                        alt={movie.Title}
+                        className="grow"
+                        width="250"
+                        height="300"
+                      />
+                    </Link>
                   </Col>
                 )
               })}
@@ -108,3 +113,4 @@ class Movies extends Component {
   }
 }
 export default Movies
+// export default RouterWrapper(Movies)
