@@ -1,4 +1,5 @@
 import { Container, Nav, Navbar } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const MyNavbar = () => {
   return (
@@ -22,21 +23,21 @@ const MyNavbar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home" className="fw-bold">
+            <Link to="/" className="nav-link fw-bold">
               Home
-            </Nav.Link>
-            <Nav.Link href="#link" className="fw-bold">
-              TV Shows
-            </Nav.Link>
-            <Nav.Link href="#link" className="fw-bold">
+            </Link>
+            <Link to="/tv-shows" className="nav-link fw-bold">
+              Tv Shows
+            </Link>
+            <Link to="/movies" className="nav-link fw-bold">
               Movies
-            </Nav.Link>
-            <Nav.Link href="#link" className="fw-bold">
+            </Link>
+            <Link to="/recently" className="nav-link fw-bold">
               Recently Added
-            </Nav.Link>
-            <Nav.Link href="#link" className="fw-bold">
+            </Link>
+            <Link to="/list" className="nav-link fw-bold">
               My List
-            </Nav.Link>
+            </Link>
           </Nav>
           <div className="d-flex align-items-center">
             <svg

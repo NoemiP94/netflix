@@ -7,6 +7,7 @@ class Movies extends Component {
     isLoading: true,
     isError: false,
   }
+
   showMovies = () => {
     fetch('https://www.omdbapi.com/?apikey=1e18e07&s=' + this.props.movieTitle)
       .then((res) => {

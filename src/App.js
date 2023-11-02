@@ -2,26 +2,24 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import MyNavbar from './components/MyNavbar'
 import MyFooter from './components/MyFooter'
-import UpperBar from './components/UpperBar'
-import Movies from './components/Movies'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import TvShows from './components/TvShows'
+import Home from './components/Home'
 
 function App() {
   return (
-    <div data-bs-theme="dark">
-      <header>
-        <MyNavbar />
-      </header>
-      <main>
-        <UpperBar />
-        <Movies
-          saga="The Lord of the Rings"
-          movieTitle="the%20lord%20of%20the%20rings"
-        />
-        <Movies saga="Doctor Who" movieTitle="doctor%20who" />
-        <Movies saga="Marvel Cinematic Universe" movieTitle="marvel" />
-      </main>
-      <MyFooter />
-    </div>
+    <BrowserRouter>
+      <div data-bs-theme="dark">
+        <header>
+          <MyNavbar />
+        </header>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/tv-shows" element={<TvShows />} />
+        </Routes>
+        <MyFooter />
+      </div>
+    </BrowserRouter>
   )
 }
 
