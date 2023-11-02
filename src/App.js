@@ -10,7 +10,7 @@ import MovieDetails from './components/MovieDetails'
 function App() {
   return (
     <BrowserRouter>
-      <div data-bs-theme="dark">
+      <div data-bs-theme="dark" className="bg-dark">
         <header>
           <MyNavbar />
         </header>

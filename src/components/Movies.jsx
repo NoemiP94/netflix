@@ -71,7 +71,7 @@ class Movies extends Component {
                     key={movie.imdbId}
                     className="col-md-4 col-lg-4 col-xl-2 mb-2 text-center"
                   >
-                    <Link to={'/detail/' + movie.imdbId}>
+                    <Link to={'/movie-detail/' + movie.imdbId}>
                       <img
                         src={movie.Poster}
                         alt={movie.Title}
@@ -93,7 +93,7 @@ class Movies extends Component {
                     key={movie.imdbId}
                     className="col-md-4 col-lg-4 col-xl-2 mb-2 text-center px-1"
                   >
-                    <Link to={'/detail/' + movie.imdbId}>
+                    <Link to={'/movie-detail/' + movie.imdbId}>
                       <img
                         src={movie.Poster}
                         alt={movie.Title}
